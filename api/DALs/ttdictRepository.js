@@ -3,15 +3,22 @@
 // Import
 // ===========================================================
 var db = require('../../dbConnection');
-// var Word = require('../models/wordModel');
+var cache = require('./ttdictCache');
 
 // Functions
 // ===========================================================
 var
     _fetchWords = function (callback) {
-        db.get().collection('ttdictcollection').find().toArray(function (err, docs) {
-            callback(err, docs);
-        });
+        var words = cache.Get();
+        if (words.length == 0) {
+            db.get().collection('ttdictcollection').find().toArray(function (err, docs) {
+                cache.Set(docs);
+                callback(err, docs);
+            });
+        }
+        else {
+            callback(null, words);
+        }
     };
 
 // Exports
