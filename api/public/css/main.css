@@ -1,0 +1,38 @@
+.title-header {
+    min-height: 100px;
+    padding: 3%;
+    background-color: #066BA3;
+}
+
+.container {
+    padding: 0;
+}
+
+.searchbox {
+    width: 80%;
+    margin: 5% auto;
+}
+
+.title-header span {
+    display: block;
+    text-align: center;
+    color: white;
+}
+
+.title-header span:nth-child(1) {
+    font-size: 220%;
+}
+
+.title-header span:nth-child(2) {
+    font-size: 80%;
+}
+
+.credit-dict {
+    text-align: center;
+}
+
+.translate-result table {
+    width: 80%;
+    margin: 5% auto;
+    font-size: 150%;
+}

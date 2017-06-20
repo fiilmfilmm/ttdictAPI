@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="ttdict">
+
+<head>
+    <title>Thai-Thai Dictionary</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <script src="/angular/angular.min.js"></script>
+    <script src="/angular-route/angular-route.min.js"></script>
+    <script type='text/javascript' src="/Scripts/core.js" charset="UTF-8"></script>
+
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <div class="title-header">
+        <span>TT dict</span>
+        <span>พจนานุกรมไทย-ไทย</span>
+    </div>
+    <div class="container" ng-controller="ttdictController">
+
+        <form ng-submit="searchfor()">
+            <div class="input-group searchbox">
+                <input class="form-control word" placeholder="ใส่คำค้นหา..." ng-model="word">
+                <span class="input-group-btn">
+                <button class="btn btn-default" type="button" ng-click="searchfor()">ค้นหา</button>
+            </span>
+            </div>
+        </form>
+        <div class="translate-result">
+            <div class="credit-dict">
+                <span>อ้างอิงจาก... </span>
+                <a target="_blank" href="http://www.royin.go.th/">พจนานุกรมฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔</a>
+            </div>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>คำศัพท์</th>
+                        <th>คำแปล</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="data in datas">
+                        <td>{{data.word}}</td>
+                        <td>{{data.translate}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
