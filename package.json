@@ -21,7 +21,6 @@
   },
   "homepage": "https://github.com/fiilmfilmm/ttdictAPI#readme",
   "devDependencies": {
-    "node-inspector": "1.1.1",
     "nodemon": "1.11.0"
   },
   "dependencies": {
