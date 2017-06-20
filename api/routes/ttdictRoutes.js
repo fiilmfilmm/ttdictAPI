@@ -11,17 +11,13 @@ module.exports = function (app, express, path) {
     });
 
     router.get('/words', function (req, res) {
-        ttdict.GetAllWords(function (err, result) {
-            if(err)
-                res.status(404);
+        ttdict.GetAllWords(function (result) {
             res.json(result);
         });
     });
 
     router.get('/words/:word', function (req, res) {
-        ttdict.GetWords(req.params.word, function(err, result) {
-            if(err)
-                res.status(404);
+        ttdict.GetWords(req.params.word, function(result) {
             res.json(result);
         });
     });

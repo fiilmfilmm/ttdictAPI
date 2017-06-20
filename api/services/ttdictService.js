@@ -9,7 +9,7 @@ var ttdictRepository = require('../DALs/ttdictRepository');
 var
     _getAllWords = function (callback) {
         ttdictRepository.FetchWords(function (err, result) {
-            callback(err, result)
+            callback(result)
         });
     },
 
@@ -21,10 +21,17 @@ var
     // ===========================================================
     _matchWords = function (word, callback) {
         ttdictRepository.FetchWords(function (err, words) {
+            if (err) {
+                callback([{ 'word': word, 'translate': 'ไม่พบผลการค้นหา' }]);
+                return;
+            }
+
             var result = [];
 
-            if (words == undefined || words == null)
-                callback(err, [{ 'word': word, 'translate': 'ไม่พบผลการค้นหา' }]);
+            if (words == undefined || words == null) {
+                callback([{ 'word': word, 'translate': 'ไม่พบผลการค้นหา' }]);
+                return;
+            }
 
             for (var i = 0; i < words.length; i++) {
                 if (words[i].word.includes(word))
@@ -33,10 +40,12 @@ var
                     result.push(words[i]);
             }
 
-            if (result.length == 0)
-                callback(err, [{ 'word': word, 'translate': 'ไม่พบผลการค้นหา' }]);
+            if (result.length == 0) {
+                callback([{ 'word': word, 'translate': 'ไม่พบผลการค้นหา' }]);
+                return;
+            }
 
-            callback(err, result);
+            callback(result);
         });
     };
 

@@ -8,14 +8,14 @@ var ttdictService = require('../services/ttdictService');
 // ===========================================================
 var 
   _getAllWords = function(callback) {
-    ttdictService.GetAllWords(function (err, result) {
-      callback(err, result);
+    ttdictService.GetAllWords(function (result) {
+      callback(result);
     });
   },
 
   _getWords = function(word, callback) {
-    ttdictService.GetWords(word, function(err, result) {
-      callback(err, result);
+    ttdictService.GetWords(word, function(result) {
+      callback(result);
     });
   };
 
