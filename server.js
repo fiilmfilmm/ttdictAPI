@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 // ===========================================================
 
 // Connect to Mongo on start
-db.connect('mongodb://admin-ttdict:ttdict@ds057954.mlab.com:57954/ttdict', function (err) {
+db.connect(process.env.MONGODB_URI, function (err) {
     if (err) {
         console.log('Unable to connect to Mongo.');
         process.exit(1);
